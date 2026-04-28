@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Konstantinidou et al.">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="ai-generated image detection, deepfake detection, image forensics, media forensics">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Despina Konstantinidou, Dimitrios Karageorgiou, Christos Koutlis, Olga Papadopoulou, Emmanouil Schinas, Symeon Papadopoulos">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="Information Technologies Institute @ CERTH">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://mever-team.github.io/itw-sm/">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Research Preview">
+  <meta property="article:published_time" content="2026-06-16T00:00:00.000Z">
+  <meta property="article:author" content="Despina Konstantinidou">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?">
+  <meta name="citation_author" content="Konstantinidou, Despina">
+  <meta name="citation_author" content="Karageorgiou, Dimitrios">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="MAD '26">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2507.10236.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Konstantinidou et al. | Academic Research</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css?v=12">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js?v=3"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?",
+    "description": "As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Despina Konstantinidou",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Information Technologies Institute @ CERTH"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Dimitrios Karageorgiou",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Information Technologies Institute @ CERTH"
+        }
+      }
+    ],
+    "datePublished": "2026-06-16",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The 5th ACM International Workshop on Multimedia AI against Disinformation (MAD '26)"
+    },
+    "url": "https://mever-team.github.io/itw-sm/",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["ai-generated image detection", "deepfake detection", "image forensics", "media forensics"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://mever-team.github.io/itw-sm/"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Information Technologies Institute @ CERTH",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+  <!-- Dark Mode Inline Script to prevent flash of white -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  </head>
+<body>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+    <i class="fas fa-moon" id="theme-icon"></i>
+  </button>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title">Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://orcid.org/0009-0005-3155-7228" target="_blank">Despina Konstantinidou</a>,</span>
+                <span class="author-block">
+                  <a href="https://orcid.org/0009-0007-4259-8249" target="_blank">Dimitrios Karageorgiou</a>,</span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0003-3682-408X" target="_blank">Christos Koutlis</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0002-0498-7506" target="_blank">Olga Papadopoulou</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0009-0007-2132-3430" target="_blank">Emmanouil Schinas</a>,
+                  </span>
+                  <span class="author-block">
+                    <a href="https://orcid.org/0000-0002-5441-7341" target="_blank">Symeon Papadopoulos</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block">Information Technologies Institute @ CERTH<br>The 5th ACM International Workshop on Multimedia AI against Disinformation (MAD '26), 2026</span>
+                    
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2507.10236.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://github.com/mever-team/itw-sm" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2507.10236" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            As generative Artificial Intelligence (AI) advances, the realism of synthesized imagery has reached a threshold capable of deceiving even vigilant human observers. Yet, while current AI-Generated Image Detection (AID) approaches perform exceptionally well on controlled benchmark datasets, they struggle significantly with real-world variations. To study this behavior we introduce the <strong>ITW-SM</strong> dataset, comprising a curated collection of real and AI-generated images originating from major social media platforms. We employ it to analyze the effects of key design choices typically considered when building a detector, involving its architecture, pre-trained latent spaces, training data as well as pre-processing approaches. We indicate that naively scaling the pre-training stage or opting for more training data does not always guarantee better detection performance. Instead, our work reveals that it is crucial to optimize each design choice to enable the processing pipeline propagate and effectively analyze both low-level traces as well as high-level image semantics. Building upon our findings, we achieve a substantial average improvement of 26.87% in AUC across multiple state-of-the-art detection approaches and under real-world conditions, providing a roadmap for developing more resilient detectors.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- End paper abstract -->
+
+<!-- Paper Highlights -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Paper Highlights</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li>A systematic experimental evaluation that reveals strengths and weaknesses of various AID approaches under real-world conditions.</li>
+            <li>The introduction of <strong>ITW-SM</strong>, a new in-the-wild AID benchmark dataset collected from four major social media platforms.</li>
+            <li>An impact analysis of training data, pre-trained latent spaces, model architectures, pre-processing stages, and data augmentations on AID performance.</li>
+            <li>An average improvement of <strong>26.87%</strong> in AUC across multiple detection approaches under real-world conditions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Paper Highlights -->
+
+<!-- Dataset: ITW-SM -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full" style="width: 100%; min-width: 0; overflow: hidden; flex-shrink: 1;">
+        <h2 class="title is-3">The ITW-SM Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            To facilitate a realistic evaluation setup and address gaps in existing resources, we introduce <strong>ITW-SM</strong>, a new in-the-wild test dataset of 10,000 real and AI-generated images collected from four major social media platforms (Facebook, Instagram, LinkedIn, and X).
+          </p>
+        </div>
+        
+        <!-- Dataset Carousel -->
+        <div id="dataset-carousel" class="carousel results-carousel" style="max-width: 100%; overflow: hidden; box-sizing: border-box;">
+          <div class="item">
+            <div style="width: 100%; text-align: center; white-space: normal; overflow: hidden; display: block;">
+              <div style="display: inline-block; width: 48%; margin-right: 2%; vertical-align: top;">
+                <img src="static/images/real_car.jpg" alt="Real Car" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>Real</strong></p>
+              </div>
+              <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <img src="static/images/fake_car.jpg" alt="AI Generated Car" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>AI Generated</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="width: 100%; text-align: center; white-space: normal; overflow: hidden; display: block;">
+              <div style="display: inline-block; width: 48%; margin-right: 2%; vertical-align: top;">
+                <img src="static/images/real_cat.jpg" alt="Real Cat" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>Real</strong></p>
+              </div>
+              <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <img src="static/images/fake_cat.jpg" alt="AI Generated Cat" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>AI Generated</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="width: 100%; text-align: center; white-space: normal; overflow: hidden; display: block;">
+              <div style="display: inline-block; width: 48%; margin-right: 2%; vertical-align: top;">
+                <img src="static/images/real_decor.jpg" alt="Real Decor" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>Real</strong></p>
+              </div>
+              <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <img src="static/images/fake_decor.jpg" alt="AI Generated Decor" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>AI Generated</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="width: 100%; text-align: center; white-space: normal; overflow: hidden; display: block;">
+              <div style="display: inline-block; width: 48%; margin-right: 2%; vertical-align: top;">
+                <img src="static/images/real_food.jpg" alt="Real Food" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>Real</strong></p>
+              </div>
+              <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <img src="static/images/fake_food.jpg" alt="AI Generated Food" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>AI Generated</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div style="width: 100%; text-align: center; white-space: normal; overflow: hidden; display: block;">
+              <div style="display: inline-block; width: 48%; margin-right: 2%; vertical-align: top;">
+                <img src="static/images/real_monument.jpg" alt="Real Monument" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>Real</strong></p>
+              </div>
+              <div style="display: inline-block; width: 48%; vertical-align: top;">
+                <img src="static/images/fake_monument.jpg" alt="AI Generated Monument" loading="lazy" style="width: 100%; height: auto; border-radius: 8px;"/>
+                <p class="has-text-centered mt-2 is-size-7-mobile" style="white-space: normal;"><strong>AI Generated</strong></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <br/>
+        
+        <div class="content has-text-justified">
+          <p>Unlike previous datasets, ITW-SM captures the resolution variability and post-processing artifacts natively present on social media platforms:</p>
+          <div class="box" style="padding: 1.5rem; width: 100%; box-sizing: border-box; overflow: hidden;">
+            <div class="table-container" style="width: 100%; overflow-x: auto; padding-bottom: 1rem;">
+              <table class="table is-bordered is-striped is-hoverable is-narrow" style="white-space: nowrap; width: 100%; margin-bottom: 0;">
+                <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>ITW-SM</th>
+                  <th>Chameleon</th>
+                  <th>TWIGMA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Source of AI images</strong></td>
+                  <td>Social Media Users</td>
+                  <td>AI-Painting Communities</td>
+                  <td>Twitter Users</td>
+                </tr>
+                <tr>
+                  <td><strong>Real Image Source</strong></td>
+                  <td>Verified Social Media Accounts</td>
+                  <td>Unsplash (Photographers)</td>
+                  <td>OpenImages Dataset</td>
+                </tr>
+                <tr>
+                  <td><strong>Number of platforms</strong></td>
+                  <td>4</td>
+                  <td>0</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><strong>Resolution Range</strong></td>
+                  <td>0.1 MP - 8.4 K</td>
+                  <td>0.9 MP - 4 K</td>
+                  <td>&lt; 0.01 MP - 8.2 K</td>
+                </tr>
+                <tr>
+                  <td><strong>Size</strong></td>
+                  <td>10,000</td>
+                  <td>26,033</td>
+                  <td>800,000</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Dataset: ITW-SM -->
+
+<!-- Methodology -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+          <p>
+            We define an experimental framework for systematically studying the effect of four key components typically considered when building an AID model:
+          </p>
+          <img src="static/images/methodology.png" alt="Methodology Framework" class="image is-fullwidth" style="border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+          <ul>
+            <li><strong>Training Data Composition:</strong> Evaluating how dataset diversity (e.g., combining benchmark data with in-the-wild TWIGMA data) affects generalization.</li>
+            <li><strong>Backbone Architectures:</strong> Assessing different vision encoders (e.g., CLIP, BLIP2, DINO-V2) for their ability to capture low-level artifacts vs. high-level semantics.</li>
+            <li><strong>Cropping Strategies:</strong> Comparing resizing, center cropping, 10-cropping, and texture-based cropping to optimally preserve generation traces.</li>
+            <li><strong>Data Augmentations:</strong> Applying geometric and noise transformations to simulate real-world distortions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Methodology -->
+
+<!-- Core Results -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Core Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our findings confirm that while most methods achieve strong results on curated benchmark datasets, their performance degrades significantly when applied to in-the-wild AI-generated images.
+          </p>
+          <img src="static/images/academic.png" alt="Performance degradation in the wild" class="image is-fullwidth" style="border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+          
+          <h3 class="title is-4">Impact of Design Choices</h3>
+          <p>
+            By systematically updating AID models with optimal design choices, we achieved a substantial average improvement of <strong>26.87%</strong> in AUC across various state-of-the-art detection approaches in real-world conditions.
+          </p>
+          <img src="static/images/comparison.png" alt="Original vs Updated performance" class="image is-fullwidth" style="border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+
+          <h3 class="title is-4">Detailed Ablation Results</h3>
+          <p>Click the tabs below to explore the detailed results of each ablation study. All values are reported as AUC / AP.</p>
+
+          <!-- Tabs Navigation -->
+          <div class="results-tabs" role="tablist">
+            <button class="results-tab active" data-tab="tab-backbone" role="tab" aria-selected="true">
+              <i class="fas fa-brain"></i>&nbsp; Backbone
+            </button>
+            <button class="results-tab" data-tab="tab-training" role="tab" aria-selected="false">
+              <i class="fas fa-database"></i>&nbsp; Training Data
+            </button>
+            <button class="results-tab" data-tab="tab-cropping" role="tab" aria-selected="false">
+              <i class="fas fa-crop-alt"></i>&nbsp; Cropping
+            </button>
+            <button class="results-tab" data-tab="tab-augmentation" role="tab" aria-selected="false">
+              <i class="fas fa-magic"></i>&nbsp; Augmentations
+            </button>
+          </div>
+
+          <!-- Tab 1: Backbone -->
+          <div id="tab-backbone" class="tab-panel active" role="tabpanel">
+            <div class="box" style="padding: 1rem; width: 100%; box-sizing: border-box; overflow: hidden;">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-narrow">
+                  <thead>
+                    <tr>
+                      <th>Model</th>
+                      <th>Pre-train Data</th>
+                      <th>Synthbuster</th>
+                      <th>Chameleon</th>
+                      <th>ITW-SM</th>
+                      <th>Average</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>CLIP L/14</td>
+                      <td>400M</td>
+                      <td>96.98 / 97.33</td>
+                      <td>82.25 / 81.34</td>
+                      <td>96.53 / 96.98</td>
+                      <td>91.92 / 91.88</td>
+                    </tr>
+                    <tr>
+                      <td>OpenCLIP L/14</td>
+                      <td>2B</td>
+                      <td>74.82 / 81.11</td>
+                      <td>85.86 / 83.03</td>
+                      <td>90.01 / 91.54</td>
+                      <td>83.56 / 85.23</td>
+                    </tr>
+                    <tr>
+                      <td>CLIP H/14</td>
+                      <td>2B</td>
+                      <td>97.02 / 81.71</td>
+                      <td>81.22 / 76.98</td>
+                      <td>90.56 / 91.81</td>
+                      <td>89.60 / 83.50</td>
+                    </tr>
+                    <tr>
+                      <td>BLIP2</td>
+                      <td>129M</td>
+                      <td class="is-best">99.37 / 99.48</td>
+                      <td class="is-best">86.58 / 86.28</td>
+                      <td>96.49 / 96.97</td>
+                      <td>94.15 / 94.24</td>
+                    </tr>
+                    <tr>
+                      <td>DINO-V2-L/14</td>
+                      <td>142M</td>
+                      <td>99.14 / 99.18</td>
+                      <td>87.33 / 85.51</td>
+                      <td class="is-best">98.23 / 98.50</td>
+                      <td class="is-best">94.90 / 94.40</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="tab-caption">Performance (AUC/AP) of the RINE method with different backbones. Other components fixed to DINO-V2-L/14, LDM+TWIGMA (1.2M), Texture cropping, With augmentations.</p>
+            </div>
+          </div>
+
+          <!-- Tab 2: Training Data -->
+          <div id="tab-training" class="tab-panel" role="tabpanel">
+            <div class="box" style="padding: 1rem; width: 100%; box-sizing: border-box; overflow: hidden;">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-narrow">
+                  <thead>
+                    <tr>
+                      <th>Method / Dataset</th>
+                      <th>Synthbuster</th>
+                      <th>Chameleon</th>
+                      <th>ITW-SM</th>
+                      <th>Average</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="method-header"><td colspan="5">DMID</td></tr>
+                    <tr>
+                      <td>LDM</td>
+                      <td>81.26 / 82.79</td>
+                      <td>54.69 / 55.03</td>
+                      <td>79.96 / 81.87</td>
+                      <td>71.97 / 73.23</td>
+                    </tr>
+                    <tr>
+                      <td>TWIGMA</td>
+                      <td>90.27 / 90.15</td>
+                      <td>82.97 / 78.51</td>
+                      <td>91.55 / 92.03</td>
+                      <td>88.26 / 86.90</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (400K)</td>
+                      <td>89.23 / 89.20</td>
+                      <td>77.81 / 72.85</td>
+                      <td>88.04 / 85.95</td>
+                      <td>85.03 / 82.67</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (1.2M)</td>
+                      <td class="is-best">92.40 / 91.65</td>
+                      <td class="is-best">83.71 / 79.33</td>
+                      <td class="is-best">92.26 / 92.58</td>
+                      <td class="is-best">89.46 / 87.85</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">RINE</td></tr>
+                    <tr>
+                      <td>LDM</td>
+                      <td>95.04 / 95.39</td>
+                      <td>63.94 / 52.79</td>
+                      <td>83.52 / 83.07</td>
+                      <td>80.83 / 77.08</td>
+                    </tr>
+                    <tr>
+                      <td>TWIGMA</td>
+                      <td>97.77 / 97.96</td>
+                      <td class="is-best">89.03 / 86.69</td>
+                      <td>97.66 / 98.07</td>
+                      <td>94.82 / 94.24</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (400K)</td>
+                      <td class="is-best">99.61 / 99.66</td>
+                      <td>86.51 / 85.12</td>
+                      <td>97.90 / 98.20</td>
+                      <td>94.67 / 94.33</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (1.2M)</td>
+                      <td>99.14 / 99.18</td>
+                      <td>87.33 / 85.51</td>
+                      <td class="is-best">98.23 / 98.50</td>
+                      <td class="is-best">94.90 / 94.40</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">NPR</td></tr>
+                    <tr>
+                      <td>LDM</td>
+                      <td>55.95 / 58.47</td>
+                      <td>53.04 / 44.57</td>
+                      <td>54.85 / 55.92</td>
+                      <td>54.61 / 52.99</td>
+                    </tr>
+                    <tr>
+                      <td>TWIGMA</td>
+                      <td>69.79 / 71.67</td>
+                      <td>60.54 / 53.96</td>
+                      <td class="is-best">80.00 / 81.63</td>
+                      <td class="is-best">70.11 / 69.09</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (400K)</td>
+                      <td>63.51 / 66.56</td>
+                      <td class="is-best">63.29 / 55.77</td>
+                      <td>43.59 / 52.66</td>
+                      <td>56.80 / 58.33</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (1.2M)</td>
+                      <td class="is-best">71.31 / 74.86</td>
+                      <td>56.29 / 49.89</td>
+                      <td>77.54 / 77.73</td>
+                      <td>68.38 / 67.49</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">SPAI</td></tr>
+                    <tr>
+                      <td>LDM</td>
+                      <td>93.87 / 94.17</td>
+                      <td>72.28 / 61.28</td>
+                      <td>78.93 / 80.17</td>
+                      <td>81.69 / 78.54</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (400K)</td>
+                      <td class="is-best">98.81 / 99.02</td>
+                      <td>89.38 / 87.26</td>
+                      <td>97.59 / 97.80</td>
+                      <td class="is-best">95.26 / 94.69</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (1.2M)</td>
+                      <td>97.45 / 98.00</td>
+                      <td class="is-best">90.21 / 88.51</td>
+                      <td class="is-best">98.10 / 98.35</td>
+                      <td>95.25 / 94.95</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="tab-caption">Performance (AUC/AP) of detection methods trained on different data configurations. Other components fixed to DINO-V2-L/14, Texture cropping, With augmentations.</p>
+            </div>
+          </div>
+
+          <!-- Tab 3: Cropping -->
+          <div id="tab-cropping" class="tab-panel" role="tabpanel">
+            <div class="box" style="padding: 1rem; width: 100%; box-sizing: border-box; overflow: hidden;">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-narrow">
+                  <thead>
+                    <tr>
+                      <th>Method / Cropping</th>
+                      <th>Synthbuster</th>
+                      <th>Chameleon</th>
+                      <th>ITW-SM</th>
+                      <th>Average</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="method-header"><td colspan="5">DMID</td></tr>
+                    <tr>
+                      <td>Center cropping</td>
+                      <td>89.41 / 89.58</td>
+                      <td>63.20 / 58.98</td>
+                      <td>83.74 / 80.06</td>
+                      <td>78.78 / 76.21</td>
+                    </tr>
+                    <tr>
+                      <td>Texture cropping</td>
+                      <td class="is-best">92.40 / 91.65</td>
+                      <td class="is-best">83.71 / 79.33</td>
+                      <td class="is-best">92.26 / 95.58</td>
+                      <td class="is-best">89.46 / 87.85</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">RINE</td></tr>
+                    <tr>
+                      <td>Center cropping</td>
+                      <td>94.65 / 94.65</td>
+                      <td>84.08 / 82.70</td>
+                      <td>95.04 / 95.75</td>
+                      <td>91.26 / 91.03</td>
+                    </tr>
+                    <tr>
+                      <td>Texture cropping</td>
+                      <td class="is-best">99.14 / 99.18</td>
+                      <td class="is-best">87.33 / 85.51</td>
+                      <td class="is-best">98.23 / 98.50</td>
+                      <td class="is-best">94.90 / 94.40</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">NPR</td></tr>
+                    <tr>
+                      <td>Center cropping</td>
+                      <td class="is-best">69.79 / 71.67</td>
+                      <td>60.54 / 53.96</td>
+                      <td class="is-best">80.00 / 81.63</td>
+                      <td class="is-best">70.11 / 69.09</td>
+                    </tr>
+                    <tr>
+                      <td>Texture cropping</td>
+                      <td>64.08 / 65.78</td>
+                      <td class="is-best">62.34 / 54.24</td>
+                      <td>76.03 / 76.98</td>
+                      <td>67.48 / 65.67</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="tab-caption">Performance (AUC/AP) of detection methods with different cropping methods. Other components fixed to DINO-V2-L/14, LDM+TWIGMA (1.2M), With augmentations.</p>
+            </div>
+          </div>
+
+          <!-- Tab 4: Augmentations -->
+          <div id="tab-augmentation" class="tab-panel" role="tabpanel">
+            <div class="box" style="padding: 1rem; width: 100%; box-sizing: border-box; overflow: hidden;">
+              <div class="table-container">
+                <table class="table is-bordered is-striped is-hoverable is-narrow">
+                  <thead>
+                    <tr>
+                      <th>Method / Augmentation</th>
+                      <th>Synthbuster</th>
+                      <th>Chameleon</th>
+                      <th>ITW-SM</th>
+                      <th>Average</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="method-header"><td colspan="5">DMID</td></tr>
+                    <tr>
+                      <td>Without augmentations</td>
+                      <td>76.53 / 66.47</td>
+                      <td>76.21 / 69.36</td>
+                      <td>82.20 / 81.42</td>
+                      <td>78.31 / 72.42</td>
+                    </tr>
+                    <tr>
+                      <td>With augmentations</td>
+                      <td class="is-best">92.40 / 91.65</td>
+                      <td class="is-best">83.71 / 79.33</td>
+                      <td class="is-best">92.26 / 92.58</td>
+                      <td class="is-best">89.46 / 87.85</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">RINE</td></tr>
+                    <tr>
+                      <td>Without augmentations</td>
+                      <td>93.63 / 95.02</td>
+                      <td class="is-best">92.16 / 90.24</td>
+                      <td>93.70 / 94.03</td>
+                      <td>93.16 / 93.10</td>
+                    </tr>
+                    <tr>
+                      <td>With augmentations</td>
+                      <td class="is-best">99.14 / 99.18</td>
+                      <td>87.33 / 85.51</td>
+                      <td class="is-best">98.23 / 98.50</td>
+                      <td class="is-best">94.90 / 94.40</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">NPR</td></tr>
+                    <tr>
+                      <td>Without augmentations</td>
+                      <td class="is-best">72.35 / 69.61</td>
+                      <td>60.80 / 48.49</td>
+                      <td>68.92 / 64.09</td>
+                      <td>67.36 / 60.73</td>
+                    </tr>
+                    <tr>
+                      <td>With augmentations</td>
+                      <td>64.08 / 65.78</td>
+                      <td class="is-best">62.34 / 54.24</td>
+                      <td class="is-best">76.03 / 76.98</td>
+                      <td class="is-best">67.48 / 65.67</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">SPAI</td></tr>
+                    <tr>
+                      <td>Without augmentations</td>
+                      <td>94.80 / 94.83</td>
+                      <td>82.73 / 81.02</td>
+                      <td>91.46 / 91.75</td>
+                      <td>89.66 / 89.20</td>
+                    </tr>
+                    <tr>
+                      <td>With augmentations</td>
+                      <td class="is-best">97.45 / 98.00</td>
+                      <td class="is-best">90.21 / 88.51</td>
+                      <td class="is-best">98.10 / 98.35</td>
+                      <td class="is-best">95.25 / 94.95</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="tab-caption">Performance (AUC/AP) of detection methods with and without data augmentations. Trained on LDM+TWIGMA (1.2M). Other components fixed to DINO-V2-L/14, Texture cropping.</p>
+            </div>
+          </div>
+
+          <h3 class="title is-4" style="margin-top: 2rem;">Key Findings</h3>
+          <div class="box">
+            <p><strong><i class="fas fa-brain" style="color: #3273dc;"></i> Backbones:</strong> DINO-V2 significantly outperforms CLIP-based encoders for AID tasks due to its self-supervised training focused on visual understanding rather than image-text semantic alignment.</p>
+          </div>
+          <div class="box">
+            <p><strong><i class="fas fa-database" style="color: #3273dc;"></i> Training Data:</strong> Retraining on in-the-wild collected data consistently benefits performance, though end-to-end models benefit more from scale than models reliant on pre-trained spaces.</p>
+          </div>
+          <div class="box">
+            <p><strong><i class="fas fa-crop-alt" style="color: #3273dc;"></i> Pre-processing:</strong> TextureCrop preserves critical high-frequency synthetic artifacts in high-resolution images much better than standard center cropping or resizing.</p>
+          </div>
+          <div class="box">
+            <p><strong><i class="fas fa-magic" style="color: #3273dc;"></i> Augmentations:</strong> Incorporating augmentations simulating compression and noise is vital to bridge the gap between training and real-world data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Core Results -->
+
+
+
+<!-- Acknowledgements -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            This work is funded by the Horizon Europe projects vera.ai (GA No. 101070093), AI-CODE (GA No. 101135437), and ELIAS (GA No. 101120237). Computational resources were provided by the National Infrastructures for Research and Technology GRNET and funded by the EU Recovery and Resiliency Facility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Acknowledgements -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{konstantinidou2026navigating,
+  title={Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?},
+  author={Konstantinidou, Despina and Karageorgiou, Dimitrios and Koutlis, Christos and Papadopoulou, Olga and Schinas, Emmanouil and Papadopoulos, Symeon},
+  booktitle={The 5th ACM International Workshop on Multimedia AI against Disinformation (MAD '26)},
+  year={2026},
+  doi={10.1145/3810988.3812665},
+  url={https://arxiv.org/abs/2507.10236}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
