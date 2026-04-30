@@ -8,7 +8,7 @@
   <!-- TODO: Replace with your paper title and author names -->
   <meta name="title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Konstantinidou et al.">
   <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <meta name="description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world cases. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
   <!-- TODO: Add 5-10 relevant keywords for your research area -->
   <meta name="keywords" content="ai-generated image detection, deepfake detection, image forensics, media forensics">
   <!-- TODO: List all authors -->
@@ -23,7 +23,7 @@
   <!-- TODO: Same as paper title above -->
   <meta property="og:title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?">
   <!-- TODO: Same as description above -->
-  <meta property="og:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <meta property="og:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world cases. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
   <!-- TODO: Replace with your actual website URL -->
   <meta property="og:url" content="https://mever-team.github.io/itw-sm/">
   <!-- TODO: Create a 1200x630px preview image and update path -->
@@ -46,7 +46,7 @@
   <!-- TODO: Same as paper title above -->
   <meta name="twitter:title" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?">
   <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
+  <meta name="twitter:description" content="As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world cases. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.">
   <!-- TODO: Same as social preview image above -->
   <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters? - Research Preview">
@@ -115,7 +115,7 @@
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "Navigating the Challenges of AI-Generated Image Detection in the Wild: What Truly Matters?",
-    "description": "As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world variations. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.",
+    "description": "As generative AI advances, AID approaches perform well on benchmarks but struggle with real-world cases. We introduce ITW-SM to study and optimize these detectors, achieving a 26.87% AUC improvement.",
     "author": [
       {
         "@type": "Person",
@@ -291,7 +291,7 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            As generative Artificial Intelligence (AI) advances, the realism of synthesized imagery has reached a threshold capable of deceiving even vigilant human observers. Yet, while current AI-Generated Image Detection (AID) approaches perform exceptionally well on controlled benchmark datasets, they struggle significantly with real-world variations. To study this behavior we introduce the <strong>ITW-SM</strong> dataset, comprising a curated collection of real and AI-generated images originating from major social media platforms. We employ it to analyze the effects of key design choices typically considered when building a detector, involving its architecture, pre-trained latent spaces, training data as well as pre-processing approaches. We indicate that naively scaling the pre-training stage or opting for more training data does not always guarantee better detection performance. Instead, our work reveals that it is crucial to optimize each design choice to enable the processing pipeline propagate and effectively analyze both low-level traces as well as high-level image semantics. Building upon our findings, we achieve a substantial average improvement of 26.87% in AUC across multiple state-of-the-art detection approaches and under real-world conditions, providing a roadmap for developing more resilient detectors.
+            As generative Artificial Intelligence (AI) advances, the realism of AI generated imagery has reached a threshold capable of deceiving even vigilant human observers. Yet, while current AI-generated Image Detection (AID) approaches perform exceptionally well on controlled benchmark datasets, they struggle significantly with real-world cases. To study this behavior we introduce the <strong>ITW-SM</strong> dataset, a curated collection of real and AI-generated images originating from major social media platforms. We employ it to analyze the effects of key design choices typically considered when building a detector, involving its architecture, pre-trained latent spaces, training data as well as pre-processing approaches. We indicate that naively scaling the pre-training stage or opting for more training data does not always lead to better detection performance. Instead, our work reveals that it is crucial to optimize each design choice to enable the processing pipeline to propagate and effectively analyze both low-level traces as well as high-level image semantics. Building on our findings, we achieve a substantial average improvement of 26.87% in AUC across multiple state-of-the-art detection approaches and under real-world conditions, providing a roadmap for developing more resilient detectors.
           </p>
         </div>
       </div>
@@ -315,6 +315,7 @@
             <li>The introduction of <strong>ITW-SM</strong>, a new in-the-wild AID benchmark dataset collected from four major social media platforms.</li>
             <li>An impact analysis of training data, pre-trained latent spaces, model architectures, pre-processing stages, and data augmentations on AID performance.</li>
             <li>An average improvement of <strong>26.87%</strong> in AUC across multiple detection approaches under real-world conditions.</li>
+            <li>A set of recommendations for designing more robust AID models capable of handling in-the-wild variations.</li>
           </ul>
         </div>
       </div>
@@ -426,7 +427,7 @@
                   <td><strong>Real Image Source</strong></td>
                   <td>Verified Social Media Accounts</td>
                   <td>Unsplash (Photographers)</td>
-                  <td>OpenImages Dataset</td>
+                  <td>-</td>
                 </tr>
                 <tr>
                   <td><strong>Number of platforms</strong></td>
@@ -436,9 +437,9 @@
                 </tr>
                 <tr>
                   <td><strong>Resolution Range</strong></td>
-                  <td>0.1 MP - 8.4 K</td>
-                  <td>0.9 MP - 4 K</td>
-                  <td>&lt; 0.01 MP - 8.2 K</td>
+                  <td>0.1 - 45 Megapixels</td>
+                  <td>0.1 - 31 Megapixels</td>
+                  <td>&lt; 0.01 - 47 Megapixels</td>
                 </tr>
                 <tr>
                   <td><strong>Size</strong></td>
@@ -446,8 +447,29 @@
                   <td>26,033</td>
                   <td>800,000</td>
                 </tr>
+                <tr>
+                  <td><strong>Intended Focus</strong></td>
+                  <td>General in-the-wild robustness</td>
+                  <td>Generalization to realistic AI</td>
+                  <td>Analysis of AI art trends</td>
+                </tr>
               </tbody>
             </table>
+            </div>
+          </div>
+          
+          <h3 class="title is-4">Topic and Resolution Analysis</h3>
+          <p>
+            To better understand the composition of ITW-SM, we compare its topic and resolution distributions against existing web-sampled datasets, such as Chameleon. As shown below, topic distributions differ significantly between social media platforms and online painting communities. Additionally, ITW-SM exhibits a substantially broader resolution range, particularly for real images.
+          </p>
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <img src="static/images/comparison_topics_grouped.svg" alt="Topic Distribution Comparison" class="image is-fullwidth" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+              <p class="has-text-centered is-size-7 mt-2">Topic distribution in web-collected datasets.</p>
+            </div>
+            <div class="column is-half">
+              <img src="static/images/comparison_resolution_boxplot.svg" alt="Resolution Distribution Comparison" class="image is-fullwidth" style="border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+              <p class="has-text-centered is-size-7 mt-2">Resolution distribution in web-collected datasets.</p>
             </div>
           </div>
         </div>
@@ -467,9 +489,60 @@
           <p>
             We define an experimental framework for systematically studying the effect of four key components typically considered when building an AID model:
           </p>
-          <img src="static/images/methodology.png" alt="Methodology Framework" class="image is-fullwidth" style="border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
+          <img src="static/images/methodology.png" alt="Framework for studying the factors impacting expected performance and generalization in AID models." class="image is-fullwidth" style="border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"/>
           <ul>
-            <li><strong>Training Data Composition:</strong> Evaluating how dataset diversity (e.g., combining benchmark data with in-the-wild TWIGMA data) affects generalization.</li>
+            <li><strong>Training Data Composition:</strong> Evaluating how dataset diversity (e.g., combining benchmark data with in-the-wild TWIGMA data) affects generalization.
+              <div class="box mt-3" style="padding: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <div class="table-container">
+                  <table class="table is-bordered is-striped is-narrow is-fullwidth" style="font-size: 0.9rem;">
+                    <thead>
+                      <tr>
+                        <th rowspan="2" style="vertical-align: middle;">Dataset</th>
+                        <th colspan="2" class="has-text-centered">LDM Subset</th>
+                        <th colspan="2" class="has-text-centered">TWIGMA Subset</th>
+                      </tr>
+                      <tr>
+                        <th class="has-text-centered">Real</th>
+                        <th class="has-text-centered">Gen.</th>
+                        <th class="has-text-centered">Real</th>
+                        <th class="has-text-centered">Gen.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>LDM</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">-</td>
+                        <td class="has-text-centered">-</td>
+                      </tr>
+                      <tr>
+                        <td>TWIGMA</td>
+                        <td class="has-text-centered">-</td>
+                        <td class="has-text-centered">-</td>
+                        <td class="has-text-centered">600K</td>
+                        <td class="has-text-centered">600K</td>
+                      </tr>
+                      <tr>
+                        <td>LDM+TWIGMA (400K)</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">200K</td>
+                      </tr>
+                      <tr>
+                        <td>LDM+TWIGMA (1.2M)</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">200K</td>
+                        <td class="has-text-centered">600K</td>
+                        <td class="has-text-centered">600K</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p class="is-size-7 has-text-centered mt-2">Table: Training data configurations used in our experiments.</p>
+              </div>
+            </li>
             <li><strong>Backbone Architectures:</strong> Assessing different vision encoders (e.g., CLIP, BLIP2, DINO-V2) for their ability to capture low-level artifacts vs. high-level semantics.</li>
             <li><strong>Cropping Strategies:</strong> Comparing resizing, center cropping, 10-cropping, and texture-based cropping to optimally preserve generation traces.</li>
             <li><strong>Data Augmentations:</strong> Applying geometric and noise transformations to simulate real-world distortions.</li>
@@ -596,6 +669,43 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <tr class="method-header"><td colspan="5">NPR</td></tr>
+                    <tr>
+                      <td>LDM</td>
+                      <td>55.95 / 58.47</td>
+                      <td>53.04 / 44.57</td>
+                      <td>54.85 / 55.92</td>
+                      <td>54.61 / 52.99</td>
+                    </tr>
+                    <tr>
+                      <td>TWIGMA</td>
+                      <td>69.79 / 71.67</td>
+                      <td>60.54 / 53.96</td>
+                      <td class="is-best">80.00 / 81.63</td>
+                      <td class="is-best">70.11 / 69.09</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (400K)</td>
+                      <td>63.51 / 66.56</td>
+                      <td class="is-best">63.29 / 55.77</td>
+                      <td>43.59 / 52.66</td>
+                      <td>56.80 / 58.33</td>
+                    </tr>
+                    <tr>
+                      <td>LDM+TWIGMA (1.2M)</td>
+                      <td class="is-best">71.31 / 74.86</td>
+                      <td>56.29 / 49.89</td>
+                      <td>77.54 / 77.73</td>
+                      <td>68.38 / 67.49</td>
+                    </tr>
+                    <tr class="method-header"><td colspan="5">Gemma 3 IT 27B</td></tr>
+                    <tr>
+                      <td>zero-shot</td>
+                      <td class="is-best">70.61 / 70.54</td>
+                      <td class="is-best">85.01 / 79.56</td>
+                      <td class="is-best">84.04 / 75.50</td>
+                      <td class="is-best">79.89 / 75.20</td>
+                    </tr>
                     <tr class="method-header"><td colspan="5">DMID</td></tr>
                     <tr>
                       <td>LDM</td>
@@ -653,35 +763,6 @@
                       <td>87.33 / 85.51</td>
                       <td class="is-best">98.23 / 98.50</td>
                       <td class="is-best">94.90 / 94.40</td>
-                    </tr>
-                    <tr class="method-header"><td colspan="5">NPR</td></tr>
-                    <tr>
-                      <td>LDM</td>
-                      <td>55.95 / 58.47</td>
-                      <td>53.04 / 44.57</td>
-                      <td>54.85 / 55.92</td>
-                      <td>54.61 / 52.99</td>
-                    </tr>
-                    <tr>
-                      <td>TWIGMA</td>
-                      <td>69.79 / 71.67</td>
-                      <td>60.54 / 53.96</td>
-                      <td class="is-best">80.00 / 81.63</td>
-                      <td class="is-best">70.11 / 69.09</td>
-                    </tr>
-                    <tr>
-                      <td>LDM+TWIGMA (400K)</td>
-                      <td>63.51 / 66.56</td>
-                      <td class="is-best">63.29 / 55.77</td>
-                      <td>43.59 / 52.66</td>
-                      <td>56.80 / 58.33</td>
-                    </tr>
-                    <tr>
-                      <td>LDM+TWIGMA (1.2M)</td>
-                      <td class="is-best">71.31 / 74.86</td>
-                      <td>56.29 / 49.89</td>
-                      <td>77.54 / 77.73</td>
-                      <td>68.38 / 67.49</td>
                     </tr>
                     <tr class="method-header"><td colspan="5">SPAI</td></tr>
                     <tr>
@@ -891,7 +972,7 @@
         <h2 class="title is-3">Acknowledgements</h2>
         <div class="content has-text-justified">
           <p>
-            This work is funded by the Horizon Europe projects vera.ai (GA No. 101070093), AI-CODE (GA No. 101135437), and ELIAS (GA No. 101120237). Computational resources were provided by the National Infrastructures for Research and Technology GRNET and funded by the EU Recovery and Resiliency Facility.
+            We thank Zacharias Chrysidis for his invaluable assistance on late-stage experimentation with VL models. This work is funded by the Horizon Europe projects vera.ai (GA No. 101070093), AI-CODE (GA No. 101135437), and ELIAS (GA No. 101120237). Computational resources were provided by the National Infrastructures for Research and Technology GRNET and funded by the EU Recovery and Resiliency Facility.
           </p>
         </div>
       </div>
